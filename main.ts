@@ -9,25 +9,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, loc
     game.over(false, effects.melt)
 })
 function level_başlangıcı () {
-    Arfbot = sprites.create(img`
-        b b b . . . . . . . . b b b . . 
-        b 9 b . . . . . . . . b 9 b . . 
-        b b b b b b b b b b b b b b . . 
-        . . b 8 9 8 8 8 8 9 8 b . . . . 
-        . . b 8 8 8 8 8 8 8 8 b . . . . 
-        . . b 8 6 6 6 6 6 6 8 b . . . . 
-        . . b 8 8 6 6 6 6 8 8 b . . . . 
-        . . b 8 8 8 8 8 8 8 8 b . . . . 
-        . . b b b b b b b b b b . . . . 
-        . . . . . b b b b . . . . . . . 
-        . b b b b b b b b b b b b . . . 
-        . b b . b b b b b b . b b . . . 
-        . b b . b 9 9 9 9 b . b b . . . 
-        . b b . b 9 9 9 9 b . b b . . . 
-        . . . . b b b b b b . . . . . . 
-        . . . . b b . . b b . . . . . . 
-        `, SpriteKind.Player)
-    controller.moveSprite(Arfbot, 100, 0)
     if (level_akımı == 0) {
         tiles.setTilemap(tilemap`level1`)
     } else {
@@ -559,5 +540,24 @@ scene.setBackgroundImage(img`
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
     `)
-level_başlangıcı()
 level_akımı = 0
+Arfbot = sprites.create(img`
+    b b b . . . . . . . . b b b . . 
+    b 9 b . . . . . . . . b 9 b . . 
+    b b b b b b b b b b b b b b . . 
+    . . b 8 9 8 8 8 8 9 8 b . . . . 
+    . . b 8 8 8 8 8 8 8 8 b . . . . 
+    . . b 8 6 6 6 6 6 6 8 b . . . . 
+    . . b 8 8 6 6 6 6 8 8 b . . . . 
+    . . b 8 8 8 8 8 8 8 8 b . . . . 
+    . . b b b b b b b b b b . . . . 
+    . . . . . b b b b . . . . . . . 
+    . b b b b b b b b b b b b . . . 
+    . b b . b b b b b b . b b . . . 
+    . b b . b 9 9 9 9 b . b b . . . 
+    . b b . b 9 9 9 9 b . b b . . . 
+    . . . . b b b b b b . . . . . . 
+    . . . . b b . . b b . . . . . . 
+    `, SpriteKind.Player)
+controller.moveSprite(Arfbot, 100, 0)
+level_başlangıcı()

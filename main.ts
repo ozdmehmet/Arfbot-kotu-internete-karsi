@@ -32,25 +32,25 @@ function level_başlangıcı () {
     } else if (level_akımı == 10) {
         tiles.setTilemap(tilemap`level42`)
     } else if (level_akımı == 11) {
-    	
+        tiles.setTilemap(tilemap`level43`)
     } else if (level_akımı == 12) {
-    	
+        tiles.setTilemap(tilemap`level44`)
     } else if (level_akımı == 13) {
-    	
+        tiles.setTilemap(tilemap`level45`)
     } else if (level_akımı == 14) {
-    	
+        tiles.setTilemap(tilemap`level46`)
     } else if (level_akımı == 15) {
-    	
+        tiles.setTilemap(tilemap`level47`)
     } else if (level_akımı == 16) {
-    	
+        tiles.setTilemap(tilemap`level48`)
     } else if (level_akımı == 17) {
-    	
+        tiles.setTilemap(tilemap`level49`)
     } else if (level_akımı == 18) {
-    	
+        tiles.setTilemap(tilemap`level50`)
     } else if (level_akımı == 19) {
-    	
+        tiles.setTilemap(tilemap`level51`)
     } else if (level_akımı == 20) {
-    	
+        tiles.setTilemap(tilemap`level52`)
     } else if (level_akımı == 21) {
     	
     } else if (level_akımı == 22) {

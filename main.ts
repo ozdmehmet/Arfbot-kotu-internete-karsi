@@ -5,14 +5,19 @@ namespace SpriteKind {
     export const internet = SpriteKind.create()
     export const K = SpriteKind.create()
 }
+let list: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, location) {
     game.over(false, effects.melt)
 })
 function level_başlangıcı () {
     if (level_akımı == 0) {
         tiles.setTilemap(tilemap`level1`)
-    } else {
+    } else if (false) {
         tiles.setTilemap(tilemap`level5`)
+    } else if (false) {
+        tiles.setTilemap(tilemap`level6`)
+    } else {
+        tiles.setTilemap(tilemap`level7`)
     }
     tiles.placeOnRandomTile(Arfbot, assets.tile`tile`)
     for (let value of tiles.getTilesByType(assets.tile`tile`)) {
@@ -21,6 +26,9 @@ function level_başlangıcı () {
     Arfbot.ay = 200
     scene.cameraFollowSprite(Arfbot)
     info.setLife(5)
+    for (let value of list) {
+    	
+    }
     for (let value of tiles.getTilesByType(assets.tile`tile7`)) {
         para = sprites.create(img`
             . . . . . . . . . . . . . . . . 

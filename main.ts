@@ -4,6 +4,7 @@ namespace SpriteKind {
     export const kötüinternetinabisi = SpriteKind.create()
     export const internet = SpriteKind.create()
     export const K = SpriteKind.create()
+    export const kotuinternettopu = SpriteKind.create()
 }
 let list: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, location) {
@@ -23,13 +24,13 @@ function level_başlangıcı () {
     } else if (level_akımı == 6) {
         tiles.setTilemap(tilemap`level11`)
     } else if (level_akımı == 7) {
-    	
+        tiles.setTilemap(tilemap`level16`)
     } else if (level_akımı == 8) {
-    	
+        tiles.setTilemap(tilemap`level40`)
     } else if (level_akımı == 9) {
-    	
+        tiles.setTilemap(tilemap`level41`)
     } else if (level_akımı == 10) {
-    	
+        tiles.setTilemap(tilemap`level42`)
     } else if (level_akımı == 11) {
     	
     } else if (level_akımı == 12) {
@@ -69,8 +70,6 @@ function level_başlangıcı () {
     } else if (level_akımı == 29) {
     	
     } else if (level_akımı == 30) {
-    	
-    } else if (false) {
     	
     } else {
         game.over(true)
@@ -316,7 +315,7 @@ function level_başlangıcı () {
             tiles.setTileAt(value, assets.tile`transparency16`)
         }
         for (let value of tiles.getTilesByType(assets.tile`tile9`)) {
-            kötü_internet = sprites.create(img`
+            kötü_internet_topu = sprites.create(img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -334,9 +333,38 @@ function level_başlangıcı () {
                 . . . . . 2 . 2 2 . 2 . . . . . 
                 . . . . . . . 2 2 . . . . . . . 
                 `, SpriteKind.internet)
-            tiles.placeOnTile(kötü_internet, value)
+            tiles.placeOnTile(kötü_internet_topu, value)
             tiles.setTileAt(value, assets.tile`transparency16`)
         }
+    }
+    for (let value of tiles.getTilesByType(assets.tile`tile0`)) {
+        kötü_internet_topu = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . 2 2 2 2 2 . . . . . . 
+            . . . 2 2 2 4 4 4 2 2 2 2 . . . 
+            . . 2 2 4 4 4 4 4 4 4 4 2 2 . . 
+            . . 2 4 4 4 4 5 4 4 4 4 4 2 . . 
+            . . 2 4 5 4 4 4 4 4 4 4 4 2 2 . 
+            . 2 2 4 4 2 2 2 2 2 2 4 5 4 2 . 
+            . 2 4 4 2 4 5 4 4 4 4 2 4 4 2 . 
+            . 2 4 2 4 4 2 2 2 2 4 4 2 4 2 . 
+            . 2 4 2 4 2 2 4 4 2 2 4 2 4 2 . 
+            . 2 4 2 4 2 4 5 4 4 2 4 2 4 2 . 
+            . 2 4 4 4 2 4 2 2 4 2 4 4 4 2 . 
+            . 2 2 5 4 4 4 2 2 5 4 4 4 2 2 . 
+            . . 2 2 2 4 4 4 4 4 4 2 2 2 . . 
+            . . . . 2 2 2 2 2 2 2 2 . . . . 
+            `, SpriteKind.kotuinternettopu)
+        tiles.placeOnTile(kötü_internet_topu, value)
+        tiles.setTileAt(value, assets.tile`transparency16`)
+        animation.runMovementAnimation(
+        kötü_internet_topu,
+        "c 0 -100 0 100 0 0",
+        2000,
+        true
+        )
+        kötü_internet_topu.startEffect(effects.fire)
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.para, function (sprite, otherSprite) {
@@ -347,6 +375,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Arfbot.vy == 0) {
         Arfbot.vy = -100
     }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.kotuinternettopu, function (sprite, otherSprite) {
+    info.changeLifeBy(-2)
+    otherSprite.destroy()
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile5`, function (sprite, location) {
     level_akımı += 1
@@ -471,7 +503,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     otherSprite.destroy()
 })
 let Kötü_internetin_abisi: Sprite = null
-let kötü_internet: Sprite = null
+let kötü_internet_topu: Sprite = null
 let para: Sprite = null
 let Arfbot: Sprite = null
 let level_akımı = 0

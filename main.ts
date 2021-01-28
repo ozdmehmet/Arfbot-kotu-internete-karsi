@@ -62,15 +62,15 @@ function level_başlangıcı () {
     } else if (level_akımı == 25) {
         tiles.setTilemap(tilemap`level67`)
     } else if (level_akımı == 26) {
-    	
+        tiles.setTilemap(tilemap`level68`)
     } else if (level_akımı == 27) {
-    	
+        tiles.setTilemap(tilemap`level69`)
     } else if (level_akımı == 28) {
-    	
+        tiles.setTilemap(tilemap`level70`)
     } else if (level_akımı == 29) {
-    	
+        tiles.setTilemap(tilemap`level71`)
     } else if (level_akımı == 30) {
-    	
+        tiles.setTilemap(tilemap`level72`)
     } else {
         game.over(true)
     }

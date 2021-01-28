@@ -52,15 +52,15 @@ function level_başlangıcı () {
     } else if (level_akımı == 20) {
         tiles.setTilemap(tilemap`level52`)
     } else if (level_akımı == 21) {
-    	
+        tiles.setTilemap(tilemap`level63`)
     } else if (level_akımı == 22) {
-    	
+        tiles.setTilemap(tilemap`level64`)
     } else if (level_akımı == 23) {
-    	
+        tiles.setTilemap(tilemap`level65`)
     } else if (level_akımı == 24) {
-    	
+        tiles.setTilemap(tilemap`level66`)
     } else if (level_akımı == 25) {
-    	
+        tiles.setTilemap(tilemap`level67`)
     } else if (level_akımı == 26) {
     	
     } else if (level_akımı == 27) {

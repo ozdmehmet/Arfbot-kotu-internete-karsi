@@ -5,10 +5,35 @@ namespace SpriteKind {
     export const internet = SpriteKind.create()
     export const K = SpriteKind.create()
     export const kotuinternettopu = SpriteKind.create()
+    export const OcotEye = SpriteKind.create()
+    export const Tentacle = SpriteKind.create()
+    export const HitTentacle = SpriteKind.create()
+    export const Display = SpriteKind.create()
 }
 let list: number[] = []
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Tentacle, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    otherSprite.setKind(SpriteKind.HitTentacle)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile4`, function (sprite, location) {
     game.over(false, effects.melt)
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.para, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    otherSprite.destroy()
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Arfbot.vy == 0) {
+        Arfbot.vy = -100
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.kotuinternettopu, function (sprite, otherSprite) {
+    info.changeLifeBy(-2)
+    otherSprite.destroy()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`tile5`, function (sprite, location) {
+    level_akımı += 1
+    level_başlangıcı()
 })
 function level_başlangıcı () {
     if (level_akımı == 1) {
@@ -79,11 +104,11 @@ function level_başlangıcı () {
         tiles.setTileAt(value, assets.tile`transparency16`)
         scene.cameraFollowSprite(Arfbot)
         info.setLife(5)
-        for (let value of list) {
+        for (let value2 of list) {
         	
         }
-        for (let value of tiles.getTilesByType(assets.tile`tile7`)) {
-            para = sprites.create(img`
+        for (let value3 of tiles.getTilesByType(assets.tile`tile7`)) {
+            para2 = sprites.create(img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -102,7 +127,7 @@ function level_başlangıcı () {
                 . . . . . f f f f f f f . . . . 
                 `, SpriteKind.para)
             animation.runImageAnimation(
-            para,
+            para2,
             [img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -311,10 +336,10 @@ function level_başlangıcı () {
             100,
             true
             )
-            tiles.placeOnTile(para, value)
-            tiles.setTileAt(value, assets.tile`transparency16`)
+            tiles.placeOnTile(para2, value3)
+            tiles.setTileAt(value3, assets.tile`transparency16`)
         }
-        for (let value of tiles.getTilesByType(assets.tile`tile9`)) {
+        for (let value4 of tiles.getTilesByType(assets.tile`tile9`)) {
             kötü_internet_topu = sprites.create(img`
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
@@ -333,11 +358,11 @@ function level_başlangıcı () {
                 . . . . . 2 . 2 2 . 2 . . . . . 
                 . . . . . . . 2 2 . . . . . . . 
                 `, SpriteKind.internet)
-            tiles.placeOnTile(kötü_internet_topu, value)
-            tiles.setTileAt(value, assets.tile`transparency16`)
+            tiles.placeOnTile(kötü_internet_topu, value4)
+            tiles.setTileAt(value4, assets.tile`transparency16`)
         }
     }
-    for (let value of tiles.getTilesByType(assets.tile`tile0`)) {
+    for (let value5 of tiles.getTilesByType(assets.tile`tile0`)) {
         kötü_internet_topu = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -356,8 +381,8 @@ function level_başlangıcı () {
             . . 2 2 2 4 4 4 4 4 4 2 2 2 . . 
             . . . . 2 2 2 2 2 2 2 2 . . . . 
             `, SpriteKind.kotuinternettopu)
-        tiles.placeOnTile(kötü_internet_topu, value)
-        tiles.setTileAt(value, assets.tile`transparency16`)
+        tiles.placeOnTile(kötü_internet_topu, value5)
+        tiles.setTileAt(value5, assets.tile`transparency16`)
         animation.runMovementAnimation(
         kötü_internet_topu,
         "c 0 -100 0 100 0 0",
@@ -367,23 +392,6 @@ function level_başlangıcı () {
         kötü_internet_topu.startEffect(effects.fire)
     }
 }
-sprites.onOverlap(SpriteKind.Player, SpriteKind.para, function (sprite, otherSprite) {
-    info.changeScoreBy(1)
-    otherSprite.destroy()
-})
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (Arfbot.vy == 0) {
-        Arfbot.vy = -100
-    }
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.kotuinternettopu, function (sprite, otherSprite) {
-    info.changeLifeBy(-2)
-    otherSprite.destroy()
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`tile5`, function (sprite, location) {
-    level_akımı += 1
-    level_başlangıcı()
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.internet, function (sprite, otherSprite) {
     Kötü_internetin_abisi = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -504,7 +512,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 })
 let Kötü_internetin_abisi: Sprite = null
 let kötü_internet_topu: Sprite = null
-let para: Sprite = null
+let para2: Sprite = null
 let Arfbot: Sprite = null
 let level_akımı = 0
 scene.setBackgroundColor(9)
@@ -651,6 +659,14 @@ Arfbot = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(Arfbot, 100, 0)
 level_başlangıcı()
+game.onUpdate(function () {
+    for (let value6 of sprites.allOfKind(SpriteKind.Tentacle)) {
+    	
+    }
+    for (let value7 of sprites.allOfKind(SpriteKind.HitTentacle)) {
+    	
+    }
+})
 game.onUpdate(function () {
     if ((Arfbot.isHittingTile(CollisionDirection.Left) || Arfbot.isHittingTile(CollisionDirection.Right)) && Arfbot.vy > 0) {
         Arfbot.vy = 0
